@@ -7,6 +7,32 @@ export default function BuildOnScrollCanvas({ sectionRef, onFrameChange }) {
   const imagesRef = useRef([]);
   const lastFrameRef = useRef(-1);
 
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const resizeCanvas = () => {
+      const parent = canvas.parentElement;
+      if (!parent) return;
+
+      const dpr = window.devicePixelRatio || 1;
+      const rect = parent.getBoundingClientRect();
+
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${rect.height}px`;
+
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+    return () => window.removeEventListener("resize", resizeCanvas);
+  }, []);
+
   // Preload frames
   useEffect(() => {
     const images = [];
@@ -17,6 +43,16 @@ export default function BuildOnScrollCanvas({ sectionRef, onFrameChange }) {
       images.push(img);
     }
     imagesRef.current = images;
+  }, []);
+
+  useEffect(() => {
+    const img = imagesRef.current[0];
+    const canvas = canvasRef.current;
+    if (!img || !canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
   }, []);
 
   // Scroll → frame logic
@@ -51,7 +87,15 @@ export default function BuildOnScrollCanvas({ sectionRef, onFrameChange }) {
       // We clear with a specific background if images have transparency,
       // or rely on the parent container's color.
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        canvas.width / (window.devicePixelRatio || 1),
+        canvas.height / (window.devicePixelRatio || 1)
+      );
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -61,12 +105,7 @@ export default function BuildOnScrollCanvas({ sectionRef, onFrameChange }) {
   }, [sectionRef, onFrameChange]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={1600}
-      height={1200}
-      className="w-full h-full object-cover contrast-125" // Added CSS filters for gritty look
-    />
+    <canvas ref={canvasRef} className="w-full h-full block contrast-125" />
   );
 }
 
