@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  GLOBAL STYLES - ARCHITECTURAL DRAWING SYSTEM
+  
+  Philosophy:
+  - Precision over decoration
+  - Grid-based measurement
+  - Clean lines and spacing
+  - Mobile-first drafting board metaphor
+*/
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    @apply bg-white text-accent-text;
+    @apply overflow-x-hidden;
+  }
+
+  /* Architectural grid background - subtle */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(to right, #e8eaed 1px, transparent 1px),
+      linear-gradient(to bottom, #e8eaed 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-normal;
+  }
+
+  /* Remove default margins */
+  h1, h2, h3, h4, h5, h6, p {
+    @apply m-0;
+  }
+}
+
+@layer components {
+  /* Architectural line - used throughout */
+  .arch-line {
+    @apply border-accent-line;
+    @apply border-solid;
+  }
+
+  /* Measurement tick marks */
+  .tick-mark {
+    @apply w-tick h-4 bg-accent-line;
+  }
+
+  /* Scale marker */
+  .scale-marker {
+    @apply font-mono text-xs tracking-wider uppercase;
+    @apply text-blueprint-500;
+  }
+
+  /* Anchor dot - connection points */
+  .anchor-dot {
+    @apply w-2 h-2 rounded-full bg-accent-line;
+  }
+
+  /* Drawing label - annotation style */
+  .drawing-label {
+    @apply font-mono text-sm uppercase tracking-widest;
+    @apply text-blueprint-600;
+  }
+
+  /* Title block style - like architectural title blocks */
+  .title-block {
+    @apply border arch-line p-4;
+    @apply space-y-2;
+  }
+
+  /* Form field - drafting form style */
+  .draft-input {
+    @apply w-full px-4 py-3;
+    @apply border arch-line;
+    @apply bg-transparent;
+    @apply font-mono text-sm;
+    @apply focus:outline-none focus:border-accent-line focus:border-2;
+    @apply transition-all duration-200;
+  }
+
+  /* CTA / Submit - stamp style */
+  .stamp-button {
+    @apply px-8 py-3;
+    @apply border-2 arch-line;
+    @apply font-mono uppercase tracking-widest text-sm;
+    @apply bg-transparent;
+    @apply cursor-pointer;
+    @apply transition-all duration-300;
+    @apply hover:bg-accent-line hover:text-white;
+  }
+}
+
+@layer utilities {
+  /* Mobile-first spacing utilities */
+  .section-spacing {
+    @apply py-16 px-6;
+  }
+
+  @media (min-width: 768px) {
+    .section-spacing {
+      @apply py-24 px-12;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-spacing {
+      @apply py-32 px-16;
+    }
+  }
+
+  /* Precise measurements */
+  .measure-sm {
+    @apply w-8 h-px bg-accent-line;
+  }
+
+  .measure-md {
+    @apply w-16 h-px bg-accent-line;
+  }
+
+  .measure-lg {
+    @apply w-24 h-px bg-accent-line;
+  }
+}
+
+/* Custom animations - mechanical, not organic */
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
