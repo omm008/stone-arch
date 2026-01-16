@@ -11,7 +11,7 @@ const Projects = () => {
       type: "Residential",
       year: "2025",
       location: "New York, USA",
-      src: "../../public/projects/urban.png",
+      src: "/projects/urban.png",
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const Projects = () => {
       type: "Institutional",
       year: "2024",
       location: "Berlin, Germany",
-      src: "../../public/projects/culture.png",
+      src: "/projects/culture.png",
     },
     {
       id: 3,
@@ -27,7 +27,7 @@ const Projects = () => {
       type: "Interior",
       year: "2025",
       location: "Tokyo, Japan",
-      src: "../../public/projects/loft.png",
+      src: "/projects/loft.png",
     },
     {
       id: 4,
@@ -35,7 +35,7 @@ const Projects = () => {
       type: "Urban Plan",
       year: "2024",
       location: "Sydney, Aus",
-      src: "../../public/projects/waterfall.png",
+      src: "/projects/waterfall.png",
     },
     {
       id: 5,
@@ -43,7 +43,7 @@ const Projects = () => {
       type: "Commercial",
       year: "2023",
       location: "San Francisco, USA",
-      src: "../../public/projects/tech.png",
+      src: "/projects/tech.png",
     },
     {
       id: 6,
@@ -51,7 +51,7 @@ const Projects = () => {
       type: "Residential",
       year: "2025",
       location: "Swiss Alps",
-      src: "../../public/projects/mountain.png",
+      src: "/projects/mountain.png",
     },
   ];
 

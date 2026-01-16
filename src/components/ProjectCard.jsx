@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
 import { useState } from "react";
-import tech from "../../public/projects/tech.png";
 
 const ProjectCard = ({ project, index }) => {
   const [isHovered, setIsHovered] = useState(false);

@@ -1,7 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { getSectionColor } from "../constants/sectionColors";
 
 /*
   MAIN LAYOUT:
@@ -17,14 +16,13 @@ import { getSectionColor } from "../constants/sectionColors";
 
 const MainLayout = () => {
   const location = useLocation();
-  const sectionColor = getSectionColor(location.pathname);
 
   return (
     <div className="relative min-h-screen">
       {/* Global architectural axis - signature element */}
 
       {/* Navigation */}
-      <Navbar sectionColor={sectionColor} />
+      <Navbar />
 
       {/* Main content area */}
       <main className="relative">
@@ -32,7 +30,7 @@ const MainLayout = () => {
       </main>
 
       {/* Footer */}
-      <Footer sectionColor={sectionColor} />
+      <Footer />
     </div>
   );
 };
