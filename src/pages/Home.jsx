@@ -171,7 +171,7 @@ const Home = () => {
           </h2>
 
           <p className="text-white text-lg mb-10 max-w-2xl mx-auto">
-            Whether it’s a house, renovation, or early-stage idea, we can help
+            Whether it's a house, renovation, or early-stage idea, we can help
             you think it through clearly.
           </p>
 

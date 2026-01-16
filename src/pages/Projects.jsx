@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import ProjectCard from "../components/ProjectCard";
+import { div } from "framer-motion/client";
 
 const Projects = () => {
   // Brutalist Data
@@ -10,6 +11,7 @@ const Projects = () => {
       type: "Residential",
       year: "2025",
       location: "New York, USA",
+      src: "../../public/projects/urban.png",
     },
     {
       id: 2,
@@ -17,6 +19,7 @@ const Projects = () => {
       type: "Institutional",
       year: "2024",
       location: "Berlin, Germany",
+      src: "../../public/projects/culture.png",
     },
     {
       id: 3,
@@ -24,6 +27,7 @@ const Projects = () => {
       type: "Interior",
       year: "2025",
       location: "Tokyo, Japan",
+      src: "../../public/projects/loft.png",
     },
     {
       id: 4,
@@ -31,6 +35,7 @@ const Projects = () => {
       type: "Urban Plan",
       year: "2024",
       location: "Sydney, Aus",
+      src: "../../public/projects/waterfall.png",
     },
     {
       id: 5,
@@ -38,6 +43,7 @@ const Projects = () => {
       type: "Commercial",
       year: "2023",
       location: "San Francisco, USA",
+      src: "../../public/projects/tech.png",
     },
     {
       id: 6,
@@ -45,8 +51,16 @@ const Projects = () => {
       type: "Residential",
       year: "2025",
       location: "Swiss Alps",
+      src: "../../public/projects/mountain.png",
     },
   ];
+
+  function scrollToTopSmooth() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
 
   return (
     <div className="min-h-screen bg-stone-100 pt-24 md:pt-32 pb-20 text-black font-sans selection:bg-orange-600 selection:text-white">
@@ -63,10 +77,15 @@ const Projects = () => {
           >
             {/* Massive Title */}
             <h1 className="text-6xl md:text-9xl font-black uppercase leading-[0.8] tracking-tighter mb-12">
-              Project <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-500">
-                Index_02
+              Pr
+              <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-300 to-orange-600">
+                o
               </span>
+              jects
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-500">
+                -we-
+              </span>
+              made
             </h1>
 
             {/* Industrial Data Bar */}
@@ -92,14 +111,22 @@ const Projects = () => {
         <div className="max-w-screen-2xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
+              <ProjectCard
+                key={project.id}
+                src={project.src}
+                project={project}
+                index={index}
+              />
             ))}
           </div>
 
           {/* FOOTER MARKER */}
           <div className="mt-20 border-t-4 border-black pt-8 flex justify-between items-center font-black uppercase text-xl">
             <span>/// End of Index</span>
-            <span className="text-orange-600">Scroll_Up [^]</span>
+
+            <button onClick={scrollToTopSmooth}>
+              <span className="text-orange-600">Scroll_Up [^]</span>
+            </button>
           </div>
         </div>
       </section>

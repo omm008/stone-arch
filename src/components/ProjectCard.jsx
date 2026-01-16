@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
 import { useState } from "react";
+import tech from "../../public/projects/tech.png";
 
 const ProjectCard = ({ project, index }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const src = project.src;
 
   return (
     <motion.article
@@ -16,17 +19,14 @@ const ProjectCard = ({ project, index }) => {
     >
       {/* 1. IMAGE CONTAINER (Raw & Heavy) */}
       <div className="relative aspect-[4/3] bg-stone-300 border-b-4 border-black overflow-hidden">
-        {/* IMAGE PLACEHOLDER: 
-           Replace background color/div with <img src={...} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-        */}
-
-        {/* Hover Effect: Orange Overlay Filter */}
-        <div className="absolute inset-0 bg-orange-600 mix-blend-multiply opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10" />
-
-        {/* Placeholder Text inside Image */}
+        <div className="absolute inset-0 bg-white mix-blend-multiply opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10" />
+        <img
+          src={src}
+          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+        />
         <div className="absolute inset-0 flex items-center justify-center z-0">
-          <span className="font-black text-6xl text-stone-400 opacity-20 -rotate-12 uppercase group-hover:text-white group-hover:opacity-40 transition-all">
-            IMG_0{index + 1}
+          <span className="font-black text-3xl text-stone-400 opacity-70 -rotate-12 uppercase group-hover:text-white group-hover:opacity-40 transition-all">
+            STONE.ARCH
           </span>
         </div>
 

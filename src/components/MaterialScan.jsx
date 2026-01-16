@@ -77,34 +77,22 @@ const MaterialScan = ({ frame }) => {
         {/* FACES - Using Tailwind Arbitrary Values for exact positioning */}
         <div
           className={`${baseFaceStyle} ${currentStyle} [transform:translateZ(96px)]`}
-        >
-          FRONT
-        </div>
+        ></div>
         <div
           className={`${baseFaceStyle} ${currentStyle} [transform:rotateY(180deg)_translateZ(96px)]`}
-        >
-          BACK
-        </div>
+        ></div>
         <div
           className={`${baseFaceStyle} ${currentStyle} [transform:rotateY(-90deg)_translateZ(96px)]`}
-        >
-          LEFT
-        </div>
+        ></div>
         <div
           className={`${baseFaceStyle} ${currentStyle} [transform:rotateY(90deg)_translateZ(96px)]`}
-        >
-          RIGHT
-        </div>
+        ></div>
         <div
           className={`${baseFaceStyle} ${currentStyle} [transform:rotateX(90deg)_translateZ(96px)]`}
-        >
-          TOP
-        </div>
+        ></div>
         <div
           className={`${baseFaceStyle} ${currentStyle} [transform:rotateX(-90deg)_translateZ(96px)]`}
-        >
-          BTM
-        </div>
+        ></div>
 
         {/* INTERNAL CORE (Only visible in Wireframe/Complete) */}
         {phase !== "solid" && (
