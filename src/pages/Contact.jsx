@@ -1,101 +1,72 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 
 /*
-  BRUTALIST CONTACT PAGE
-  - Theme: "Work Order" / "Transmission"
-  - Inputs: Solid blocks with thick borders
-  - Submit Button: Massive interaction point
+  CONTACT PAGE — SIMPLE & DIRECT
+  - Same brutalist layout
+  - Human language
+  - Clear expectation
 */
 
 const Contact = () => {
   return (
     <div className="min-h-screen bg-stone-100 pt-24 md:pt-32 pb-20 text-black font-sans selection:bg-orange-600 selection:text-white">
-      {/* HEADER SECTION */}
+      {/* HEADER */}
       <section className="px-6 md:px-12 mb-20">
         <div className="max-w-screen-2xl mx-auto">
-          {/* Top Divider */}
           <div className="w-full h-4 bg-black mb-8" />
 
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
-            <h1 className="text-6xl md:text-9xl font-black uppercase leading-[0.8] tracking-tighter mb-8">
-              Inquiry <br />
-              <span className="text-orange-600">Protocol</span>
+            <h1 className="text-6xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter mb-8">
+              Let’s <br />
+              <span className="text-orange-600">Talk</span>
             </h1>
 
-            <div className="border-l-4 border-black pl-6 py-2 max-w-xl">
-              <p className="font-bold text-xl leading-tight">
-                INITIATE PROJECT SEQUENCE.
-                <br />
-                RESPONSE LATENCY: &lt; 48 HOURS.
-              </p>
-            </div>
+            <p className="font-bold text-xl max-w-xl">
+              Tell us about your project. We usually reply within 1–2 working
+              days.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* MAIN GRID: FORM + INFO */}
+      {/* MAIN GRID */}
       <section className="px-6 md:px-12">
         <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32">
-          {/* LEFT: THE FORM */}
-          <BrutalistForm />
+          {/* FORM */}
+          <SimpleForm />
 
-          {/* RIGHT: CONTACT DATA */}
+          {/* CONTACT INFO */}
           <div className="space-y-12">
-            {/* Info Block 01 */}
             <div className="border-t-4 border-black pt-6">
-              <span className="block font-black text-3xl uppercase mb-6">
-                / Coordinates
-              </span>
-              <p className="font-mono font-bold text-lg mb-4">
-                STUDIO HEADQUARTERS
-                <br />
-                SECTOR 7, IND AREA
-                <br />
-                JABALPUR, 482001
+              <h3 className="font-black text-2xl uppercase mb-4">Office</h3>
+              <p className="font-bold text-lg leading-relaxed">
+                Sector 7, Industrial Area <br />
+                Jabalpur, 482001
               </p>
-              <a
-                href="#"
-                className="inline-block bg-black text-white px-4 py-1 font-mono hover:bg-orange-600 transition-colors"
-              >
-                GET_DIRECTIONS -
-              </a>
             </div>
 
-            {/* Info Block 02 */}
             <div className="border-t-4 border-black pt-6">
-              <span className="block font-black text-3xl uppercase mb-6">
-                / Direct Line
-              </span>
-              <div className="space-y-4 font-mono font-bold text-lg">
-                <div className="flex justify-between border-b-2 border-stone-300 pb-2">
-                  <span>NEW BIZ</span>
+              <h3 className="font-black text-2xl uppercase mb-4">Contact</h3>
+              <div className="space-y-3 font-bold text-lg">
+                <p>
+                  Email:{" "}
                   <a
-                    href="mailto:build@aakriti.arch"
+                    href="mailto:build@stone.arch"
                     className="hover:text-orange-600"
                   >
-                    build@aakriti.arch
+                    build@stone.arch
                   </a>
-                </div>
-                <div className="flex justify-between border-b-2 border-stone-300 pb-2">
-                  <span>PRESS</span>
-                  <a
-                    href="mailto:press@aakriti.arch"
-                    className="hover:text-orange-600"
-                  >
-                    press@aakriti.arch
-                  </a>
-                </div>
-                <div className="flex justify-between border-b-2 border-stone-300 pb-2">
-                  <span>VOICE</span>
+                </p>
+                <p>
+                  Phone:{" "}
                   <a href="tel:+919876543210" className="hover:text-orange-600">
-                    +91 987 654 3210
+                    +91 98765 43210
                   </a>
-                </div>
+                </p>
               </div>
             </div>
           </div>
@@ -105,8 +76,8 @@ const Contact = () => {
   );
 };
 
-/* INTERNAL COMPONENT: BRUTALIST FORM */
-const BrutalistForm = () => {
+/* FORM COMPONENT */
+const SimpleForm = () => {
   return (
     <motion.form
       className="space-y-8"
@@ -114,50 +85,41 @@ const BrutalistForm = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
     >
-      <div className="space-y-1">
-        <label className="block font-black uppercase text-sm tracking-widest">
-          Identification Name
-        </label>
+      <div>
+        <label className="block font-black uppercase text-sm mb-2">Name</label>
         <input
           type="text"
-          placeholder="ENTER FULL NAME"
-          className="w-full bg-white border-4 border-black p-4 font-mono font-bold placeholder:text-stone-400 focus:outline-none focus:bg-orange-50 focus:border-orange-600 transition-all"
+          placeholder="Your full name"
+          className="w-full border-4 border-black p-4 font-bold focus:outline-none focus:border-orange-600"
         />
       </div>
 
-      <div className="space-y-1">
-        <label className="block font-black uppercase text-sm tracking-widest">
-          Return Address (Email)
-        </label>
+      <div>
+        <label className="block font-black uppercase text-sm mb-2">Email</label>
         <input
           type="email"
-          placeholder="USER@DOMAIN.COM"
-          className="w-full bg-white border-4 border-black p-4 font-mono font-bold placeholder:text-stone-400 focus:outline-none focus:bg-orange-50 focus:border-orange-600 transition-all"
+          placeholder="you@email.com"
+          className="w-full border-4 border-black p-4 font-bold focus:outline-none focus:border-orange-600"
         />
       </div>
 
-      <div className="space-y-1">
-        <label className="block font-black uppercase text-sm tracking-widest">
-          Project Parameters
+      <div>
+        <label className="block font-black uppercase text-sm mb-2">
+          Project details
         </label>
         <textarea
           rows="6"
-          placeholder="DESCRIBE SCOPE, SCALE, AND TIMELINE..."
-          className="w-full bg-white border-4 border-black p-4 font-mono font-bold placeholder:text-stone-400 focus:outline-none focus:bg-orange-50 focus:border-orange-600 transition-all resize-none"
+          placeholder="What are you planning to build?"
+          className="w-full border-4 border-black p-4 font-bold resize-none focus:outline-none focus:border-orange-600"
         />
       </div>
 
       <motion.button
-        whileHover={{
-          scale: 1.02,
-          x: 5,
-          y: 5,
-          boxShadow: "-5px -5px 0px 0px rgba(0,0,0,1)",
-        }}
-        whileTap={{ scale: 0.98 }}
-        className="w-full bg-orange-600 text-white font-black text-2xl uppercase py-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all"
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        className="w-full bg-orange-600 text-white font-black text-xl uppercase py-6 border-4 border-black"
       >
-        Submit Transmission
+        Send message
       </motion.button>
     </motion.form>
   );

@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
 /*
-  BRUTALIST ABOUT PAGE
-  - Theme: "The Manifesto"
-  - Structure: Heavy horizontal dividers, Dictionary definitions
-  - Visuals: No images, pure typography
+  ABOUT PAGE — SIMPLE & HONEST
+  - No manifesto language
+  - Clear positioning
+  - Easy to read
 */
 
 const About = () => {
@@ -14,103 +14,67 @@ const About = () => {
       <section className="px-6 md:px-12 mb-24">
         <div className="max-w-screen-2xl mx-auto">
           <div className="w-full h-4 bg-black mb-8" />
-          <motion.div
+
+          <motion.h1
+            className="text-6xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
           >
-            <h1 className="text-6xl md:text-9xl font-black uppercase leading-[0.8] tracking-tighter">
-              Studio <br />
-              <span className="stroke-text text-white text-stroke-3 text-stroke-black">
-                Profile
-              </span>
-            </h1>
-          </motion.div>
+            About <br />
+            <span className="text-orange-600">Us</span>
+          </motion.h1>
         </div>
       </section>
 
-      {/* SECTION 01: THE MANIFESTO */}
+      {/* WHO WE ARE */}
+      <section className="px-6 md:px-12 mb-32">
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
+          <div className="md:col-span-8">
+            <p className="text-3xl md:text-5xl font-bold leading-tight">
+              We design buildings that are practical, durable, and clear.
+            </p>
+          </div>
+          <div className="md:col-span-4 border-l-4 border-black pl-8">
+            <p className="font-bold text-lg">
+              Our work focuses on solving real problems — site constraints,
+              budgets, climate, and how people actually use spaces.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW WE WORK */}
       <section className="px-6 md:px-12 mb-32">
         <div className="max-w-screen-2xl mx-auto">
-          {/* Heavy Divider */}
-          <div className="border-t-4 border-black pt-2 flex justify-between items-start mb-12">
-            <span className="font-black text-xl bg-black text-white px-2">
-              01 // MANIFESTO
-            </span>
-          </div>
+          <h2 className="text-4xl md:text-6xl font-black uppercase mb-12 border-b-4 border-black pb-4">
+            How we work
+          </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-            <div className="md:col-span-8">
-              <motion.p
-                className="text-3xl md:text-5xl font-bold uppercase leading-tight"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-              >
-                We do not decorate. We build. <br />
-                <span className="text-stone-400">
-                  Architecture is a violent act of construction—stripping away
-                  the inessential to reveal the structural truth.
-                </span>
-              </motion.p>
-            </div>
-            <div className="md:col-span-4 border-l-4 border-black pl-8 flex flex-col justify-end">
-              <p className="font-mono font-bold text-sm">
-                Our practice rejects ornamentation in favor of material honesty.
-                Concrete, steel, and light are our only mediums.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 02: METHODOLOGY (Dictionary Style) */}
-      <section className="px-6 md:px-12 mb-32">
-        <div className="max-w-screen-2xl mx-auto">
-          <div className="border-t-4 border-black pt-2 mb-12">
-            <span className="font-black text-xl bg-black text-white px-2">
-              02 // METHODOLOGY
-            </span>
-          </div>
-
-          <div className="space-y-0">
-            {/* Item 1 */}
-            <MethodItem
-              term="Reduction"
-              def="The process of removing all non-structural elements until only the necessary form remains."
-              num="01"
+          <div className="space-y-8">
+            <WorkItem
+              title="Understand the site"
+              desc="We study rules, climate, surroundings, and constraints before designing anything."
             />
-            {/* Item 2 */}
-            <MethodItem
-              term="Materiality"
-              def="The honest expression of construction materials. Concrete looks like concrete. Steel looks like steel."
-              num="02"
+            <WorkItem
+              title="Plan clearly"
+              desc="Layouts are simple, functional, and easy to build."
             />
-            {/* Item 3 */}
-            <MethodItem
-              term="Permanence"
-              def="Designing structures that resist the erosion of trends and time. Architecture for centuries, not seasons."
-              num="03"
+            <WorkItem
+              title="Support execution"
+              desc="We help ensure the final building matches the design intent."
             />
           </div>
         </div>
       </section>
 
-      {/* SECTION 03: DATA SHEET */}
+      {/* STATS */}
       <section className="px-6 md:px-12">
         <div className="max-w-screen-2xl mx-auto bg-black text-white p-8 md:p-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-            <DataPoint label="ESTABLISHED" value="2020" />
-            <DataPoint label="OPERATIVES" value="12" />
-            <DataPoint label="COMPLETED" value="45+" />
-            <DataPoint label="BASE" value="GLOBAL" />
-          </div>
-
-          <div className="mt-16 pt-8 border-t border-white/20 flex justify-between items-end">
-            <span className="font-mono text-xs uppercase text-stone-500">
-              /// END OF FILE
-            </span>
-            <div className="w-16 h-16 bg-orange-600"></div>
+            <Stat label="Founded" value="2020" />
+            <Stat label="Projects" value="45+" />
+            <Stat label="Team" value="12" />
+            <Stat label="Location" value="India" />
           </div>
         </div>
       </section>
@@ -118,29 +82,24 @@ const About = () => {
   );
 };
 
-// Sub-component for Methodology List
-const MethodItem = ({ term, def, num }) => (
+const WorkItem = ({ title, desc }) => (
   <motion.div
-    className="group border-b-4 border-black py-8 flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12 hover:bg-white transition-colors"
+    className="border-b-4 border-black py-8"
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
   >
-    <span className="font-mono text-orange-600 font-bold">({num})</span>
-    <h3 className="text-4xl md:text-6xl font-black uppercase flex-1 group-hover:translate-x-4 transition-transform duration-300">
-      {term}
-    </h3>
-    <p className="md:w-1/3 font-bold text-lg leading-snug">{def}</p>
+    <h3 className="text-3xl md:text-4xl font-black mb-2">{title}</h3>
+    <p className="text-stone-600 font-medium max-w-3xl">{desc}</p>
   </motion.div>
 );
 
-// Sub-component for Data Grid
-const DataPoint = ({ label, value }) => (
-  <div className="flex flex-col">
-    <span className="font-mono text-orange-600 text-xs mb-2 block">
+const Stat = ({ label, value }) => (
+  <div>
+    <span className="text-orange-600 text-xs uppercase block mb-2">
       {label}
     </span>
-    <span className="font-black text-4xl md:text-6xl">{value}</span>
+    <span className="text-4xl md:text-6xl font-black">{value}</span>
   </div>
 );
 
